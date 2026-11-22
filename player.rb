@@ -8,4 +8,8 @@ class Player
     @name = name
     @mark = mark
   end
+
+  def present_self
+    puts "The first player is #{self.name} with mark \"#{self.mark}\"."
+  end
 end

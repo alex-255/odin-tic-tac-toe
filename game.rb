@@ -11,11 +11,13 @@ class Game
     @board = Board.new
     @player1 = Player.new('Bob', '0')
     @player2 = Player.new('Alice', 'X')
+    self.player1.present_self
+    self.player2.present_self
   end
 
   def make_turn(player)
     puts "#{player.name}, make your choice(example, \"1A\"):"
-    @board.add_mark(gets.chomp, player)
+    @board.add_mark(gets.chomp.upcase, player)
   end
 
   def the_winner_is(board)
@@ -27,7 +29,12 @@ class Game
       b[0][0] == '0' && b[1][1] == '0' && b[2][2] == '0' ||
       b[2][0] == '0' && b[1][1] == '0' && b[0][2] == '0'
       @player1
-    elsif b[0][0] == 'X' && b[0][1] == 'X' && b[0][2] == 'X'
+    elsif b[0][0] == 'X' && b[0][1] == 'X' && b[0][2] == 'X' ||
+      b[0][0] == 'X' && b[1][0] == 'X' && b[2][0] == 'X' ||
+      b[2][0] == 'X' && b[2][1] == 'X' && b[2][2] == 'X' ||
+      b[0][2] == 'X' && b[1][2] == 'X' && b[2][2] == 'X' ||
+      b[0][0] == 'X' && b[1][1] == 'X' && b[2][2] == 'X' ||
+      b[2][0] == 'X' && b[1][1] == 'X' && b[0][2] == 'X'
       @player2
     else
       false
@@ -52,6 +59,4 @@ end
 
 game = Game.new
 game.board.render
-puts "The first player is #{game.player1.name} with mark \"#{game.player1.mark}\"."
-puts "The second player is #{game.player2.name} with mark \"#{game.player2.mark}\"."
 game.play(game.player1, game.player2)

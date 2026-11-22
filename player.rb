@@ -10,6 +10,6 @@ class Player
   end
 
   def present_self
-    puts "The first player is #{self.name} with mark \"#{self.mark}\"."
+    puts "#{self.name} plays with mark \"#{self.mark}\"."
   end
 end

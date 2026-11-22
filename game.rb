@@ -9,8 +9,10 @@ class Game
 
   def initialize
     @board = Board.new
-    @player1 = Player.new('Bob', '0')
-    @player2 = Player.new('Alice', 'X')
+    puts 'Enter first player name:'
+    @player1 = Player.new(gets.chomp, '0')
+    puts 'Enter second player name:'
+    @player2 = Player.new(gets.chomp, 'X')
     self.player1.present_self
     self.player2.present_self
   end
@@ -27,14 +29,18 @@ class Game
         b[2][0] == '0' && b[2][1] == '0' && b[2][2] == '0' ||
         b[0][2] == '0' && b[1][2] == '0' && b[2][2] == '0' ||
         b[0][0] == '0' && b[1][1] == '0' && b[2][2] == '0' ||
-        b[2][0] == '0' && b[1][1] == '0' && b[0][2] == '0'
+        b[2][0] == '0' && b[1][1] == '0' && b[0][2] == '0' ||
+        b[1][0] == '0' && b[1][1] == '0' && b[1][2] == '0' ||
+        b[0][1] == '0' && b[1][1] == '0' && b[2][1] == '0'
       @player1
     elsif b[0][0] == 'X' && b[0][1] == 'X' && b[0][2] == 'X' ||
           b[0][0] == 'X' && b[1][0] == 'X' && b[2][0] == 'X' ||
           b[2][0] == 'X' && b[2][1] == 'X' && b[2][2] == 'X' ||
           b[0][2] == 'X' && b[1][2] == 'X' && b[2][2] == 'X' ||
           b[0][0] == 'X' && b[1][1] == 'X' && b[2][2] == 'X' ||
-          b[2][0] == 'X' && b[1][1] == 'X' && b[0][2] == 'X'
+          b[2][0] == 'X' && b[1][1] == 'X' && b[0][2] == 'X' ||
+          b[1][0] == 'X' && b[1][1] == 'X' && b[1][2] == 'X' ||
+          b[0][1] == 'X' && b[1][1] == 'X' && b[2][1] == 'X'
       @player2
     else
       false

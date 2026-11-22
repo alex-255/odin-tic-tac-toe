@@ -28,7 +28,7 @@ class Board
     @board[row_index][column_index] = player.mark
   end
 
-  def render_board # rubocop:disable Metrics/AbcSize
+  def render # rubocop:disable Metrics/AbcSize
     puts '  1   2   3  '
     puts "A #{@board[0][0]} | #{@board[0][1]} | #{@board[0][2]}"
     puts '  ---------'

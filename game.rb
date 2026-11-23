@@ -58,8 +58,14 @@ class Game
         current_player = player1
       end
       @board.render
+      if @board.count_marks == 9
+        puts 'It\'s a tie game!'
+        break
+      end
     end
-    puts "The winner is #{self.the_winner_is(@board).name}! Congratulations!"
+    if @board.count_marks < 9 # rubocop:disable Style/GuardClause
+      puts "The winner is #{self.the_winner_is(@board).name}! Congratulations!"
+    end
   end
 end
 

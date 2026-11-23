@@ -28,6 +28,17 @@ class Board
     @board[row_index][column_index] = player.mark
   end
 
+  def count_marks
+    marks = 0
+
+    @board.each do |row|
+      row.each do |cell|
+        marks += 1 if cell == '0' || cell == 'X' # rubocop:disable Style/MultipleComparison
+      end
+    end
+    marks
+  end
+
   def render # rubocop:disable Metrics/AbcSize
     puts '  1   2   3  '
     puts "A #{@board[0][0]} | #{@board[0][1]} | #{@board[0][2]}"
